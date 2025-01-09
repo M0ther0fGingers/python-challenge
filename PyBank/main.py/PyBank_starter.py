@@ -26,7 +26,6 @@ net_change_list = []
 with open(file_to_load) as financial_data:
     reader = csv.reader(financial_data, delimiter=',')
     
-
     # Skip the header row
     header = next(reader)
 
@@ -35,16 +34,14 @@ with open(file_to_load) as financial_data:
     row_count += 1
     profits += int(first_row[1])
     prev_val = int(first_row[1])
-    #print(f"Inital value: {first_row[1]}")
     
     # count all the rows to get the total months
     for row in reader:
         row_count += 1
+
     # Track the total and net change
-    #for row in reader:
         profits += int(row[1])
         net_change = int(row[1]) - prev_val
-        #net_change_list += [net_change]
         net_change_list.append(net_change)
         prev_val = int(row[1])
 
@@ -57,38 +54,6 @@ with open(file_to_load) as financial_data:
             greatest_decrease[1] = net_change
 
     avg_monthly_change = sum(net_change_list)/(len(net_change_list))     
-
-    
-
-
-    #print(sum(net_change_list))
-    #print(f"Profits: {profits}")
-    
-        #total_net = sum(profits)
-        #print(total_net)
-    #print(f"Number of months: {row_count}")
-    #print(f"The total profit and loss is: {total_net}")
-
-  
-
-
-    # Process each row of data
-#for row in reader:
-
-        # Track the total
-
-
-        # Track the net change
-
-
-        # Calculate the greatest increase in profits (month and amount)
-
-
-        # Calculate the greatest decrease in losses (month and amount)
-
-
-
-# Calculate the average net change across the months
 
 
 # Generate the output summary
